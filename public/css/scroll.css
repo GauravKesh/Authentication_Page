@@ -1,0 +1,26 @@
+
+/*  Custom scroll bar */
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+    background-image: linear-gradient(150deg, #3f84dd, hsl(196, 90%, 31%));
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px rgb(121, 31, 31);
+    border-radius: 10px;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background-image: linear-gradient(150deg, #eff7ee, hsl(196, 90%, 31%));
+    border-radius: 10px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #c8b3b3;
+  }
+  
