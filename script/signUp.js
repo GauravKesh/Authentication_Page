@@ -1,6 +1,6 @@
-const dot = require("dotenv").config();
+// const dot = require("dotenv").config();
 
-
+// Function to toggle password visibility
 function togglePassword(
   fieldId,
   iconId,

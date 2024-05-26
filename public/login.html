@@ -15,16 +15,19 @@
   <nav class="navbar">
     <div class="container-m">
       <a href="./home.html" class="navbar-brand">Accura</a>
-        <li class="nav-li">
-          <a href="../public/signUp.html" class="nav-link">Signup</a>
+        <li class="nav-li com">
+          <a href="../public/signUp.html" class="nav-link">Sign Up</a>
+        </li>
+        <li class="nav-li logout" style="display: none;">
+          <a href="" class="nav-link logout " onclick="logOut()" id="logout">Log out</a>
         </li>
       </ul>
     </div>
   </nav>
-  <div class="container">
+  <div class="container home">
     <div class="login-box">
       <h1>Login</h1>
-      <form action="" method="" id="form">
+      <form action="http://localhost:9000/signin" method="POST" id="form">
         <div class="textbox">
           <i class="fas fa-user"></i>
           <input type="text" placeholder="Username" name="name" required>
@@ -51,6 +54,7 @@
       <div class="signup-link">
         <span>Don't have an account? <a href="../public/signUp.html">Sign up here</a>.</span>
       </div>
+      <div id="result"></div>
     </div>
   </div>
   <script src="../script/signin.js">
