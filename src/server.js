@@ -1,18 +1,14 @@
 const express = require("express");
-const path =  require("path")
-const bodyParser =  require("body-parser");
+const path = require("path");
+const bodyParser = require("body-parser");
 const { connectToDo, getDb } = require("./database");
-const bcrypt =  require("bcrypt")
-const port = 2000;
+const bcrypt = require("bcrypt");
+const port = 9000;
 
 // init app & middleware
 const app = express();
 app.use(express.json()); // Middleware for parsing JSON
-app.set('view engine','ejs')
-app.use(express.static("public"));
-app.use(bodyParser.urlencoded({
-  extended:true
-}))
+app.use(express.urlencoded({ extended: true })); // Middleware for parsing URL-encoded data
 
 
 // db connection
@@ -20,7 +16,7 @@ let db;
 connectToDo((err) => {
   if (!err) {
     app.listen(port, () => {
-      console.log(`app is listening at ${port}`);
+      console.log(`App is listening at ${port}`);
     });
     db = getDb();
   } else {
@@ -28,63 +24,65 @@ connectToDo((err) => {
   }
 });
 
-const static_path = path.join("public")
-
-// for accessing sign in and signUP forms.
-
-app.get("/",(req,res)=>{
-  res.render("./public/login.html");
-})
-
-app.get("/signup",(req,res)=>{
-  res.render("signup")
-})
-
-// creating  a new user
-app.post("/signup", async (req, res) => {
-  const data = {
-    name:req.body.username,
-    email:req.body.email,
-    password:req.body.password
-  }
-  const existingUser  = await  db.collection('users').findOne({name:data.name});
-  if(existingUser){
-    res.send("user name already taken Try another user name")
-  }else{
-    const saltRounds = 10;
-    const hashedPwd = await bcrypt.hash(data.password);
-    data.password =  hashedPwd; /// hashed password replaced the original password 
-     db.collection("users")
-       .insertMany(data)
-       .then((result) => {
-         res.status(201).json(result);
-         console.log("data uploaded");
-       })
-       .catch((err) => {
-         res.status(500).json({ err: "Couldn't create a new request" });
-       });
-    
-  }
- 
+app.get("/signup", (req, res) => {
+  res.render("signup");
 });
 
+// creating a new user
+app.post("/signup", async (req, res) => {
+  const data = {
+    name: req.body.name,
+    email: req.body.email,
+    password: req.body.password,
+  };
+  console.log(data)
 
-// sign in 
- app.post("/sigin",async (req,res)=>{
-  try{
-    const check =  await db.collection({name:qs.body.username});
-    const isPasswordMatch =  await bcrypt.compare(req.body.password,check.password);
-    if(isPasswordMatch){
-      res.render("")
+  try {
+    // checking if user exits or not in data base 
+    const existingUser = await db
+      .collection("users")
+      .findOne({ name: data.name, });
+        const existingEmail = await db
+          .collection("users")
+          .findOne({ email: data.email });
+    if (existingUser || existingEmail) {
+      if (existingUser) {
+        res.status(409).send("Username already taken. Try another username");
+      } else {
+        res.status(409).send("Email already taken. Try another email");
+      }
 
-    }else{
-      res.send("Wrong password try again");
+      return;
+    } else {
+      console.log(data);
+      const saltRounds = 10;
+      const hashedPwd = await bcrypt.hash(data.password, saltRounds); // hashing the user password for security layers
+      data.password = hashedPwd; // replace the original password with the hashed password
+      const result = await db.collection("users").insertOne(data);
+      res.status(201).json(result);
+      console.log("User registered successfully");
     }
+  } catch (err) {
+    console.error("Error during signup:", err);
+    res.status(500).json({ err: "Error hashing password" });
   }
-  catch{
-    res.send("Wrong Details");
+});
+
+// sign in
+app.post("/signin", async (req, res) => {
+  try {
+    const check = await db.collection("users").findOne({ name: req.body.name });
+    const isPasswordMatch = await bcrypt.compare(
+      req.body.password,
+      check.password
+    );
+    if (isPasswordMatch) {
+      res.send("Logged in");
+      console.log("User logged in");
+    } else {
+      res.send("Wrong password. Try again");
     }
-
+  } catch (err) {
+    res.send("Wrong details");
   }
- )
-
+});

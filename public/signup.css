@@ -1,0 +1,168 @@
+/* Reset styles for the body */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(to right, #a7b3b6, #4f5e73);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Styles for the navbar */
+.navbar {
+  width: 100%;
+  background: #4f5e73;
+  padding: 15px 20px;
+  box-sizing: border-box;
+}
+
+.navbar .container-m {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar .navbar-brand {
+  color: white;
+  text-decoration: none;
+  font-size: 1.5em;
+}
+
+.navbar .navbar-nav {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+}
+
+.navbar .nav-li {
+  margin-left: 20px;
+}
+
+.navbar .nav-link {
+  color: white;
+  text-decoration: none;
+  font-size: 1em;
+}
+
+/* Container for the signup box */
+.container {
+  width: 100%;
+  max-width: 400px;
+  margin: auto;
+}
+
+/* Styles for the signup box */
+.signup-box {
+  background: linear-gradient(to right, #a7b3b6, #4f5e73);
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 20px 20px 20px 20px rgba(69, 48, 48, 0.1);
+  text-align: center;
+}
+
+/* Styles for the heading inside the signup box */
+.signup-box h1 {
+  margin-bottom: 20px;
+}
+
+/* Styles for the text input boxes */
+.textbox {
+  position: relative;
+  margin-bottom: 30px;
+}
+
+.textbox i {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.textbox input {
+  width: 100%;
+  padding: 10px;
+  padding-left: 40px;
+  box-sizing: border-box;
+  background: linear-gradient(to right, #a7b3b6, #4f5e73);
+}
+
+/* Styles for the toggle password button */
+.textbox .toggle-password {
+  position: absolute;
+  right: 35px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+/* Styles for the submit button */
+.btn {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  background: linear-gradient(to right, #00d2ff, #3a7bd5);
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: 1.5s;
+  -webkit-transition: 1.5s ease-in;
+  -moz-transition: 1.5s;
+  -ms-transition: 1.5s;
+  -o-transition: 1.5s;
+}
+
+.btn:hover {
+  background: linear-gradient(to right, #3a7bd5, #00d2ff);
+}
+
+/* Styles for the social login section */
+.social-login {
+  margin-top: 20px;
+}
+
+.social-login span {
+  display: block;
+  margin-bottom: 10px;
+}
+
+/* Styles for the social media icons */
+.social-icons a {
+  text-decoration: none;
+  color: white;
+  font-size: 20px;
+  margin: 0 10px;
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  background: #3a7bd5;
+  border-radius: 50%;
+  line-height: 40px;
+  transition: background 0.3s;
+}
+
+.social-icons a:hover {
+  background: #00d2ff;
+}
+
+/* Styles for the login link */
+.login-link {
+  margin-top: 20px;
+}
+
+.login-link span {
+  color: white;
+}
+
+.login-link a {
+  color: #00d2ff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.login-link a:hover {
+  text-decoration: underline;
+}
