@@ -3,13 +3,10 @@ const mongoose = require("mongoose");
 const dot = require("dotenv").config();
 
 let dbConnection;
-
-// Log environment variables
-// console.log("ACCESS_ID:", process.env.ACCESS_ID);
-// console.log("ACCESS_KEY:", process.env.ACCESS_KEY);
-
 // MongoDB URI
-const uri = `mongodb+srv://${process.env.ACCESS_ID}:${process.env.ACCESS_KEY}@cluster0.ribtrjl.mongodb.net/accuratech?retryWrites=true&w=majority`;
+const uri = `mongodb+srv://${process.env.ACCESS_ID}:${process.env.ACCESS_KEY}@cluster0.ribtrjl.mongodb.net/${process.env.ACCESS_COLLECTION}?retryWrites=true&w=majority`;
+
+
 
 // Connecting remotely
 const connectToDo = (cb) => {

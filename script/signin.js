@@ -11,3 +11,11 @@ function togglePassword() {
     togglePasswordIcon.classList.add("fa-eye");
   }
 }
+
+
+function addAction() {
+
+    const methodLink = document.querySelector("form");
+    methodLink.action = "http://localhost:9000/signin";
+    methodLink.method = "post";
+  }

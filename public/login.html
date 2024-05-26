@@ -24,10 +24,10 @@
   <div class="container">
     <div class="login-box">
       <h1>Login</h1>
-      <form action="http://localhost:9000/signin" method="post">
+      <form action="" method="" id="form">
         <div class="textbox">
           <i class="fas fa-user"></i>
-          <input type="text" placeholder="Username" name="username" required>
+          <input type="text" placeholder="Username" name="name" required>
         </div>
         <div class="textbox">
           <i class="fas fa-lock"></i>
@@ -37,7 +37,7 @@
           </span>
         </div>
         <a href="#" class="forgot-password">Forgot password?</a>
-        <button type="submit" class="btn">Login</button>
+        <button type="submit" onclick="addAction()" class="btn">Login</button>
         <div class="social-login">
           <span>or</span>
           <span>Login using</span>
