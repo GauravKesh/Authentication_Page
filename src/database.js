@@ -3,9 +3,13 @@ const mongoose = require("mongoose");
 const dot = require("dotenv").config();
 
 let dbConnection;
-// MongoDB URI
-const uri = `mongodb+srv://${process.env.ACCESS_ID}:${process.env.ACCESS_KEY}@cluster0.ribtrjl.mongodb.net/${process.env.ACCESS_COLLECTION}?retryWrites=true&w=majority`;
+console.log(process.env.API_URI); 
 
+// MongoDB URI  ANOTHER METHODS
+
+// const uri = `mongodb+srv://${process.env.ACCESS_ID}:${process.env.ACCESS_KEY}@cluster0.ribtrjl.mongodb.net/${process.env.ACCESS_COLLECTION}?retryWrites=true&w=majority`;  
+
+const uri = process.env.API_URI; // url to connect with database
 
 
 // Connecting remotely
