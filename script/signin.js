@@ -34,7 +34,7 @@ if (session === "true") {
   dispElements.forEach((el) => (el.style.display = "none")); // Hide login signup button"
   logoutElement.style.display = "flex"; // Show logout element
   bdy.style.display = "none"; // Hide login box
-  window.location.href = "./home.html"; // Redirect to home page
+  window.location.href = "../index.html"; // Redirect to home page
 } else {
   const dispElements = document.querySelectorAll(".com");
   const logoutElement = document.querySelector(".logout");

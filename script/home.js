@@ -16,5 +16,5 @@ if (session === "true") {
 
 const logOut = () => {
   sessionStorage.setItem("session", "false");
-  window.location.href = "./login.html"; 
+  window.location.href = "../public/login.html"; 
 };
